@@ -13,7 +13,7 @@ Utilise l'API Assistants d'OpenAI
 
 # Installation
 
-## Avoir Python 3 ou plus installé sur sa machine
-## Installer les dépendances situées dans requirements.txt
-## Exécuter app.py
-## Accéder au serveur localhost en entrant http://127.0.0.1:5000/ sur son navigateur
+### Avoir Python 3 ou plus installé sur sa machine
+### Installer les dépendances situées dans requirements.txt
+### Exécuter app.py
+### Accéder au serveur localhost en entrant http://127.0.0.1:5000/ sur son navigateur
