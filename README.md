@@ -4,7 +4,7 @@ Un projet Flask, ouvre un site web qui contient deux chatbots
 
 ## Chatbot GPT
 
-Un chatbot utilisant l'API GPT-3.5-Turbo, capable de répondre à tous types de questions sur tous les sujets, à l'instar du modèle dsponible sur chatgpt.com.
+Un chatbot utilisant l'API GPT-3.5-Turbo, capable de répondre à tous types de questions sur tous les sujets, à l'instar du modèle disponible sur www.chatgpt.com.
 
 ## Chatbot ESME
 
