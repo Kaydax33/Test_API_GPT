@@ -2,10 +2,14 @@ from flask import Flask, render_template, request, jsonify, redirect
 from openai import OpenAI
 import time
 import re
+from dotenv import load_dotenv
+import os
+
+# Charger les variables d'environnement depuis le fichier .env
+load_dotenv()
 
 client = OpenAI(
-    # This is the default and can be omitted
-    api_key="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",
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 app = Flask(__name__)
@@ -13,22 +17,18 @@ assistant_id = "asst_FYyFzZYc2EoRYvR0Pr1U7TWa"
 history = []
 history_esme = []
 
-
 @app.route("/")
 def index():
     return redirect("/chatbot")
-
 
 @app.route("/chatbot")
 def chatbot():
     return render_template('chat.html')
 
-
 @app.route("/chatbot/get", methods=['GET', 'POST'])
 def chatbotmsg():
     msg = request.form['msg']
     return get_chat_response(msg)
-
 
 def get_chat_response(prompt):
     history.append({"role": "user", "content": prompt})
@@ -40,17 +40,14 @@ def get_chat_response(prompt):
     history.append({"role": "assistant", "content": response_content})
     return response_content
 
-
 @app.route("/chatesme")
 def chatesme():
     return render_template('chatesme.html')
-
 
 @app.route("/chatesme/get", methods=['GET', 'POST'])
 def chatesmemsg():
     msg = request.form['msg']
     return get_chat_response_esme(msg)
-
 
 def get_chat_response_esme(prompt):
     thread = client.beta.threads.create()
@@ -74,7 +71,6 @@ def get_chat_response_esme(prompt):
     )
     returned_value = messages.model_dump()['data'][0]['content'][0]['text']['value']
     return re.sub('【.*】', '', returned_value)
-
 
 if __name__ == "__main__":
     app.run()
